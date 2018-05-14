@@ -21,7 +21,7 @@ bin_dir=$DEP_DIR/$SUB_DIR/bin
 echo Making $bin_dir
 mkdir -p $bin_dir
 
-echo Downloading & installing openjdk 8...
+echo Downloading installing openjdk 8...
 sudo apt-get install openjdk-8-jdk
 # curl -s --retry 15 --retry-delay 2 -L $flyway_url -o $bin_dir/flyway.tar.gz
 # cd $bin_dir
