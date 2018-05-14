@@ -1,0 +1,45 @@
+#!/bin/bash
+
+set -eu
+
+BUILD_DIR=$1
+CACHE_DIR=$2
+DEP_DIR=$3
+SUB_DIR=$4
+
+echo JDK 8 for Linux
+
+# Create a config.yml file in the /tmp/deps/IDX/ folder
+cat > $DEP_DIR/$SUB_DIR/config.yml << EOF
+name: jdk-buildpack
+version: 0.1
+EOF
+
+# flyway_url=https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/5.0.7/flyway-commandline-5.0.7-linux-x64.tar.gz
+bin_dir=$DEP_DIR/$SUB_DIR/bin
+
+echo Making $bin_dir
+mkdir -p $bin_dir
+
+echo Downloading flyway...
+# curl -s --retry 15 --retry-delay 2 -L $flyway_url -o $bin_dir/flyway.tar.gz
+# cd $bin_dir
+# tar xvzf flyway.tar.gz
+# mv flyway-5.0.7/* .
+# rm -rf flyway-5.0.7/
+# rm flyway.tar.gz
+
+echo Build Dir $BUILD_DIR
+echo Cache Dir $CACHE_DIR
+echo Dep Dir $DEP_DIR
+echo Sub Dir $SUB_DIR
+
+# PROFILED_FOLDER=$DEP_DIR/$SUB_DIR/profile.d
+# PROFILED_FILE=$PROFILED_FOLDER/profile.d
+# echo Creating $PROFILED_FILE
+# mkdir -p $PROFILED_FOLDER
+# # Create a profile.d file to set any environment variables
+# flywaybin="export DEPS_IDX=$SUB_DIR"';export PCF_FLYWAY_BINDIR=$DEPS_DIR/$DEPS_IDX/bin'
+# echo $flywaybin > $PROFILED_FILE 
+echo JDK buildpack complete
+
